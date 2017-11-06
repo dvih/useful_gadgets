@@ -11,7 +11,7 @@ body {
 
   h2 {
     color: #FFF;
-    margin: 5px 5px 5px 5px;
+    margin: 5px;
   }
 }
 
@@ -20,10 +20,20 @@ body {
 }
 
 .product {
+  height: auto;
   width: 300px;
   display: inline-block;
   background-color: #555;
-  margin: 5px 5px 5px 5px;
+  margin: 5px;
+
+  .product_image {
+    margin: 5px;
+    float: right;
+
+    img {
+      border-radius: 20%;
+    }
+  }
 
   h3 {
     margin: 0px;
