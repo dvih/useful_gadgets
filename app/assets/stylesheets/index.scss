@@ -1,3 +1,42 @@
 // Place all the styles related to the index controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$main-font:         Tahoma, sans-serif;
+$main-font-color:   #FFF;
+
+
+body {
+  font: $main-font;
+  background-color: #222;
+  color: $main-font-color;
+
+  h2 {
+    color: #FFF;
+    margin: 5px 5px 5px 5px;
+  }
+}
+
+.category {
+  background-color: #333;
+}
+
+.product {
+  width: 300px;
+  display: inline-block;
+  background-color: #555;
+  margin: 5px 5px 5px 5px;
+
+  h3 {
+    margin: 0px;
+    padding: 5px;
+    text-align: center;
+    background-color: #444;
+    color: #FFF;
+    font-weight: bolder;
+  }
+
+  p {
+    padding: 5px;
+  }
+}
