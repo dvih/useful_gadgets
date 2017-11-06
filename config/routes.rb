@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'index#index'
+    get '' => 'index#index', as: 'index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

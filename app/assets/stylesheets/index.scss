@@ -1,13 +1,11 @@
-// Place all the styles related to the index controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'navigation.scss';
 
-$main-font:         Tahoma, sans-serif;
-$main-font-color:   #FFF;
+$main-font: 'Lato', sans-serif;
+$main-font-color: #FFF;
 
 
 body {
-  font: $main-font;
+  font-family: $main-font;
   background-color: #222;
   color: $main-font-color;
 

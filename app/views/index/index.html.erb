@@ -1,17 +1,17 @@
 <body>
-<h1>Products</h1>
-<p>
-  <% @categories.each do |category| %>
-    <div class="category">
-      <h2><%=category.name%></h2>
-        <%category.products.each do |product|%>
-          <div class="product">
-            <h3><%=product.name%></h3>
-            <p>Price: $<%= product.price%></p>
+  <h1>Products</h1>
+  <p>
+    <% @categories.each do |category| %>
+      <div class="category">
+        <h2><%=category.name%></h2>
+          <%category.products.each do |product|%>
+            <div class="product">
+              <h3><%=product.name%></h3>
+              <p>Price: $<%= product.price%></p>
 
-          </div>
-        <%end%>
-    </div>
-  <%end%>
-</p>
+            </div>
+          <%end%>
+      </div>
+    <%end%>
+  </p>
 </body>
