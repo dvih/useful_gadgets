@@ -1,0 +1,13 @@
+<body>
+  <p>
+    <div class="category">
+      <h2><%=@product.name%></h2>
+        <div class="product_detail">
+          <p class="product_image"><%= image_tag(@product.image.url(:large)) %></p>
+          <p>Category: <%=@product.category.name%></p>
+          <p><%=@product.description%></p>
+          <p>Price: $<%= @product.price%></p>
+        </div>
+    </div>
+  </p>
+</body>
