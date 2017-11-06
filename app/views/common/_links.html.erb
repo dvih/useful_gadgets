@@ -1,3 +1,11 @@
 <ul class = "navigation">
   <li><%= link_to 'Home', index_path %></li>
+  <div class="dropdown">
+    <div class="dropbtn">Categories</div>
+    <div class="dropdown-content">
+      <% @categories.each do |category| %>
+          <%=link_to category.name, show_path(category.id)%>
+      <%end%>
+    </div>
+  </div>
 </ul>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>UsefulGadgets</title>
+    <title>Useful Gadgets</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <%= render 'common/links' %>
+    <%= render 'common/links', :categories => @categories %>
     <%= yield %>
   </body>
 </html>

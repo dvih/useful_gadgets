@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-    get '' => 'category#index', as: 'index'
+  get '' => 'category#index', as: 'index'
+
+  get '/:id' => 'category#show', as: 'show', id: /\d+/
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

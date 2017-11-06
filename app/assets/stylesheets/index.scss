@@ -8,15 +8,23 @@ body {
   font-family: $main-font;
   background-color: #222;
   color: $main-font-color;
-
-  h2 {
-    color: #FFF;
-    margin: 5px;
-  }
 }
 
 .category {
   background-color: #333;
+
+  h2 {
+    margin: 5px;
+
+    a {
+      color: #FFF;
+      text-decoration: none;
+
+      &:hover {
+         color: #999;
+      }
+    }
+  }
 }
 
 .product {
