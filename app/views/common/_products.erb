@@ -1,6 +1,12 @@
 <div class="product">
   <h3><%=product.name%></h3>
-  <p class="product_image"><%= image_tag(product.image.url(:med)) %></p>
+  <p class="product_image">
+    <% if product.image.url.include? 'missing.png' %>
+      <%= link_to '[' + product.name + ']', show_product_path(product.id) %>
+    <% else %>
+      <%= link_to image_tag(product.image.url(:med)), show_product_path(product.id) %>
+    <% end %>
+  </p>
   <p>Price: $<%= product.price%></p>
 
 </div>

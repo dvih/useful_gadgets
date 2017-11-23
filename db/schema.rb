@@ -50,6 +50,6 @@ ActiveRecord::Schema.define(version: 20171106080244) do
   end
 
 # Could not dump table "products" because of following StandardError
-#   Unknown type 'attachment' for column 'image'
+#   Unknown type '' for column 'image'
 
 end

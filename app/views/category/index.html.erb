@@ -5,11 +5,7 @@
       <div class="category">
         <h2><%=link_to category.name, show_path(category.id)%></h2>
           <%category.products.each do |product|%>
-          <div class="product">
-            <h3><%=link_to product.name, show_product_path(product.id)%></h3>
-            <p class="product_image"><%= link_to image_tag(product.image.url(:med)), show_product_path(product.id) %></p>
-            <p>Price: $<%= product.price%></p>
-          </div>
+          <%= render 'common/products', :product => product %>
           <%end%>
       </div>
     <%end%>
