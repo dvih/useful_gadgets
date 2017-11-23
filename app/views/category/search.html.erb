@@ -1,0 +1,32 @@
+<body>
+  <h1>
+    Search Results for "<%=@query%>"
+    <% if !@search_category_name.nil? %>
+      under <%=@search_category_name%>
+    <% end %>:
+
+  </h1>
+  <p>
+    <% @search_results.each do |category| %>
+      <div id="<%=category.name%>" class="category">
+        <h2><%=link_to category.name, show_path(category.id)%></h2>
+          <%category.products.each do |product|%>
+          <% if @products.map(&:name).include? product.name %>
+            <div class="product_detail search_results">
+              <h3><%=product.name%></h3>
+              <p class="product_image">
+                <% if product.image.url.include? 'missing.png' %>
+                  <%= link_to '[' + product.name + ']', show_product_path(product.id) %>
+                <% else %>
+                  <%= link_to image_tag(product.image.url(:med)), show_product_path(product.id) %>
+                <% end %>
+              </p>
+              <p><%=product.description%></p>
+              <p>Price: $<%= product.price%></p>
+            </div>
+          <%end%>
+          <%end%>
+      </div>
+    <%end%>
+  </p>
+</body>
