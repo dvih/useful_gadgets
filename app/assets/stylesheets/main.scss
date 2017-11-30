@@ -164,3 +164,26 @@ h4 {
 
   &:hover {background-color: $link_to-hover-color;}
 }
+
+footer {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #333;
+
+  p {
+    padding: 5px 5px 5px 10px;
+    display: inline-block;
+    margin: 0px 20px 0px 0px;
+  }
+
+  a {
+    color: $text-color;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+       background-color: #222;
+    }
+  }
+}
