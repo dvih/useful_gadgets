@@ -104,6 +104,32 @@ h4 {
   }
 }
 
+.minicart {
+  background-color: #333;
+  width: fit-content;
+  padding: 3px;
+
+  ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  li {
+    padding: 0px 10px 0px 10px;
+
+    &:nth-child(even) {
+     background-color: #444;
+    }
+
+    a {
+      float: right;
+      text-decoration: none;
+    }
+  }
+
+}
+
 .link_to_item {
   margin: 10px;
   padding: 5px;
@@ -115,7 +141,7 @@ h4 {
 }
 
 .link_to_mini {
-  margin: 10px;
+  margin: 0px 0px 0px 10px;
   color: $link_to-text-color !important;
 
   &:hover {background-color: $link_to-hover-color;}

@@ -1,9 +1,10 @@
 <% if products_in_cart.any? %>
-  <div class="category">
+  <div class="minicart">
     <h3>Products In Cart</h3>
+    <ul>
     <% products_in_cart.each do |product| %>
-      <%= product.name %> <%= link_to "Remove", remove_from_cart_product_path(product), method: :post, class: "link_to_mini" %>
-      <br />
+      <li><%= product.name %> <%= link_to "[x]", remove_from_cart_product_path(product), method: :post, class: "link_to_mini" %></li>
     <% end %>
+    </ul>
   </div>
 <% end %>
