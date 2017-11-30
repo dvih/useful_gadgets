@@ -19,7 +19,8 @@ class ProductController < ApplicationController
     id = params[:id].to_i
     session[:cart].delete(id)
 
-    redirect_to request.referer
+    product_name = Product.find(id).name
+    redirect_to request.referer, notice: "Removed #{product_name} from the "
   end
 
   def add_to_cart
@@ -28,7 +29,8 @@ class ProductController < ApplicationController
     # push product to session
     session[:cart] << id unless session[:cart].include?(id)
 
-    redirect_to request.referer
+    product_name = Product.find(id).name
+    redirect_to request.referer, notice: "Added #{product_name} to the "
   end
 
   private

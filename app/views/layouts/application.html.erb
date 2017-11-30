@@ -14,9 +14,12 @@
     <%= render 'common/links', :categories => @categories %>
   </header>
   <body>
-    <div class="flash">
-
-    </div>
+    <% if flash[:notice] %>
+      <div class="flash">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <p><%= flash[:notice] %><%= link_to 'cart.', cart_path %></p>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
   <footer>
