@@ -9,8 +9,12 @@
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   </head>
 
+  <header>
+    <h1><%= link_to 'Useful Gadgets', index_path %></h1>
+  </header>
   <body>
     <%= render 'common/links', :categories => @categories %>
     <%= yield %>
   </body>
+  
 </html>

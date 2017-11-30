@@ -1,13 +1,12 @@
-<body>
-  <header>
-    <%= form_tag search_products_path do %>
-        <select name="search_category">
-            <option value="-1">All</option>
-          <% @categories.each do |category| %>
-            <option value="<%=category.id%>"><%=category.name%></option>
-          <% end %>
-      </select>
-      <input class="searchbar" id="searchbar" name="query" placeholder="Search Products" type="text" autocomplete="off"/>
-    <% end %>
-  </header>
-</body>
+<div class="navsearch">
+  <%= form_tag search_products_path do %>
+    <select name="search_category">
+        <option value="-1">All</option>
+      <% @categories.each do |category| %>
+        <option value="<%=category.id%>"><%=category.name%></option>
+      <% end %>
+    </select>
+    <input class="searchbar" id="searchbar" name="query" placeholder="Search Products" type="text" autocomplete="off"/>
+    <button type="submit" formmethod="post">Search</button>
+  <% end %>
+</div>

@@ -3,15 +3,13 @@
   <head>
     <meta charset="UTF-8">
   </head>
-  <header>
+  <body>
     <h1>
       Search Results for "<%=@query%>"
       <% if !@search_category_name.nil? %>
         under <%=@search_category_name%>
       <% end %>:
     </h1>
-  </header>
-  <body>
     <p>
       <% @search_results.each do |category| %>
         <div id="<%=category.name%>" class="category">

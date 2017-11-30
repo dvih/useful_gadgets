@@ -3,12 +3,9 @@
   <head>
     <meta charset="UTF-8">
   </head>
-  <header>
-    <h1><%=@category.name%></h1>
-    <%= render 'common/search', :categories => @categories %>
-  </header>
   <body>
     <p>
+      <h1><%=@category.name%></h1>
       <%= render 'common/minicart', :products_in_cart => @products_in_cart %>
 
       <div class="category">
