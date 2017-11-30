@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :product, only: [:index] do
     member do
-      post :cart
+      post :view_cart
       post :add_to_cart
     end
   end

@@ -1,5 +1,7 @@
 class CategoryController < ApplicationController
   before_action :set_categories, only: [:index, :show, :search]
+  before_action :load_products_in_cart, only: [:index]
+
   def set_categories
     @categories = Category.includes(:products).all.order("name")
   end
@@ -27,5 +29,11 @@ class CategoryController < ApplicationController
     else
       @search_results = Category.joins(:products).where(:products => {:id => @products.map{|x| x.id}}).distinct
     end
+  end
+
+  private
+
+  def load_products_in_cart
+    @products_in_cart = Product.find(session[:cart])
   end
 end
