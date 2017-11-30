@@ -8,6 +8,10 @@
     <% end %>
   </p>
   <p>Price: $<%= product.price%></p>
-  <%= link_to "Buy", add_to_cart_product_path(product), method: :post %>
+  <% if @products_in_cart.include?(product) %>
+    <%= link_to "Remove", remove_from_cart_product_path(product), method: :post %>
+  <% else %>
+    <%= link_to "Add", add_to_cart_product_path(product), method: :post %>
+  <% end %>
 
 </div>

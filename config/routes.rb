@@ -7,9 +7,11 @@ Rails.application.routes.draw do
 
   get '/product/:id' => 'product#show', as: 'show_product', id: /\d+/
 
+  get '/cart'=> 'product#show_cart', as: 'cart'
+
   resources :product, only: [:index] do
     member do
-      post :view_cart
+      post :remove_from_cart
       post :add_to_cart
     end
   end

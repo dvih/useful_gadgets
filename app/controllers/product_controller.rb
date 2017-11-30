@@ -1,6 +1,7 @@
 class ProductController < ApplicationController
-  before_action :set_categories, only: [:show]
+  before_action :set_categories
   before_action :initialize_session
+  before_action :load_products_in_cart, only: [:show_cart]
 
   def set_categories
     @categories = Category.includes(:products).all.order("name")
@@ -10,8 +11,15 @@ class ProductController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def view_cart
+  def show_cart
 
+  end
+
+  def remove_from_cart
+    id = params[:id].to_i
+    session[:cart].delete(id)
+
+    redirect_to request.referer
   end
 
   def add_to_cart
@@ -28,5 +36,9 @@ class ProductController < ApplicationController
   def initialize_session
     # if cart is not initialized
     session[:cart] ||= []
+  end
+
+  def load_products_in_cart
+    @products_in_cart = Product.find(session[:cart])
   end
 end

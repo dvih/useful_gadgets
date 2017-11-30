@@ -1,6 +1,6 @@
 class CategoryController < ApplicationController
   before_action :set_categories, only: [:index, :show, :search]
-  before_action :load_products_in_cart, only: [:index]
+  before_action :load_products_in_cart, only: [:index, :show]
 
   def set_categories
     @categories = Category.includes(:products).all.order("name")

@@ -1,19 +1,13 @@
 <body>
   <h1>Products</h1>
-
-  <% if @products_in_cart.any? %>
-  <div class="cart">
-    <h2>Shopping Cart</h2>
-    <%= render @products_in_cart %>
-  </div>
-  <% end %>
-
   <p>
+    <%= render 'common/minicart', :products_in_cart => @products_in_cart %>
+
     <% @categories.each do |category| %>
       <div class="category">
         <h2><%=link_to category.name, show_path(category.id)%></h2>
           <%category.products.each do |product|%>
-          <%= render 'common/product', :product => product %>
+          <%= render 'products/product', :product => product %>
           <%end%>
       </div>
     <%end%>

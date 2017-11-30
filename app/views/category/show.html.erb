@@ -1,10 +1,12 @@
 <body>
   <h1><%=@category.name%></h1>
   <p>
+    <%= render 'common/minicart', :products_in_cart => @products_in_cart %>
+
     <div class="category">
       <h2><%=@category.name%></h2>
       <%@category.products.each do |product|%>
-        <%= render 'common/product', :product => product %>
+        <%= render 'products/product', :product => product %>
       <%end%>
     </div>
   </p>
