@@ -7,11 +7,11 @@
       <%= link_to image_tag(product.image.url(:med)), show_product_path(product.id) %>
     <% end %>
   </p>
-  <p>Price: $<%= product.price%></p>
+  <p class = 'price'>Price: $<%= product.price %></p>
   <% if @products_in_cart.include?(product) %>
-    <%= link_to "Remove", remove_from_cart_product_path(product), method: :post %>
+    <%= link_to "Remove", remove_from_cart_product_path(product), method: :post, class: "link_to_item" %>
   <% else %>
-    <%= link_to "Add", add_to_cart_product_path(product), method: :post %>
+    <%= link_to "Add", add_to_cart_product_path(product), method: :post, class: "link_to_item" %>
   <% end %>
 
 </div>

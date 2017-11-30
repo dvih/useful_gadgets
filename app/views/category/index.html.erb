@@ -1,15 +1,23 @@
-<body>
-  <h1>Products</h1>
-  <p>
-    <%= render 'common/minicart', :products_in_cart => @products_in_cart %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Useful Gadgets - Index</title>
+    <%= render 'common/search', :categories => @categories %>
+  </head>
+  <body>
+    <h1>Products</h1>
+    <p>
+      <%= render 'common/minicart', :products_in_cart => @products_in_cart %>
 
-    <% @categories.each do |category| %>
-      <div class="category">
-        <h2><%=link_to category.name, show_path(category.id)%></h2>
-          <%category.products.each do |product|%>
-          <%= render 'products/product', :product => product %>
-          <%end%>
-      </div>
-    <%end%>
-  </p>
-</body>
+      <% @categories.each do |category| %>
+        <div class="category">
+          <h2><%=link_to category.name, show_path(category.id)%></h2>
+            <%category.products.each do |product|%>
+            <%= render 'products/product', :product => product %>
+            <%end%>
+        </div>
+      <%end%>
+    </p>
+  </body>
+</html>

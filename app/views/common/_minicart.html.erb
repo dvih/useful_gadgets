@@ -2,7 +2,7 @@
   <div class="category">
     <h3>Products In Cart</h3>
     <% products_in_cart.each do |product| %>
-      <%= product.name %> <%= link_to "Remove", remove_from_cart_product_path(product), method: :post %>
+      <%= product.name %> <%= link_to "Remove", remove_from_cart_product_path(product), method: :post, class: "link_to_mini" %>
       <br />
     <% end %>
   </div>
