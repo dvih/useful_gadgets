@@ -7,6 +7,13 @@ Rails.application.routes.draw do
 
   get '/product/:id' => 'product#show', as: 'show_product', id: /\d+/
 
+  resources :product, only: [:index] do
+    member do
+      post :cart
+      post :add_to_cart
+    end
+  end
+
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

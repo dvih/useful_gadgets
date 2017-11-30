@@ -7,4 +7,13 @@ class ProductController < ApplicationController
   def show
     @product = Product.find(params[:id])
   end
+
+  def cart
+
+  end
+
+  def add_to_cart
+    id = params[:id].to_i
+    render plain: "Adding product with id #{id}"
+  end
 end

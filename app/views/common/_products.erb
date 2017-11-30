@@ -8,5 +8,6 @@
     <% end %>
   </p>
   <p>Price: $<%= product.price%></p>
+  <%= link_to "Buy", add_to_cart_product_path(product), method: :post %>
 
 </div>
