@@ -1,5 +1,5 @@
 <div class="product">
-  <h3><%=product.name%></h3>
+  <h3><%= link_to product.name, show_product_path(product.id) %></h3>
   <p class="product_image">
     <% if product.image.url.include? 'missing.png' %>
       <%= link_to '[' + product.name + ']', show_product_path(product.id) %>
