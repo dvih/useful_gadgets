@@ -11,9 +11,12 @@
 
   <header>
     <h1><%= link_to 'Useful Gadgets', index_path %></h1>
+    <%= render 'common/links', :categories => @categories %>
   </header>
   <body>
-    <%= render 'common/links', :categories => @categories %>
+    <div class="flash">
+
+    </div>
     <%= yield %>
   </body>
   <footer>

@@ -1,12 +1,11 @@
 $text-color: #EEE;
 
 .navigation {
+  box-shadow: 1px 1px 2px 0px #000;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   background-color: #333;
-  overflow: visible;
 
   li {
     display: inline-block;
@@ -41,6 +40,7 @@ $text-color: #EEE;
   &:hover {
     .dropdown-content {
       display: block;
+      box-shadow: 2px 2px 4px 0px #000;
     }
 
     .dropbtn {
