@@ -2,11 +2,12 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Useful Gadgets - Index</title>
-    <%= render 'common/search', :categories => @categories %>
   </head>
-  <body>
+  <header>
     <h1>Products</h1>
+    <%= render 'common/search', :categories => @categories %>
+  </header>
+  <body>
     <p>
       <%= render 'common/minicart', :products_in_cart => @products_in_cart %>
 

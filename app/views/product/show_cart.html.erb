@@ -1,12 +1,20 @@
-<body>
-  <h1>Shopping Cart</h1>
-  <p>
-    <% if @products_in_cart.any? %>
-    <div class="category">
-      <%= render @products_in_cart %>
-    </div>
-    <% else %>
-      There are no products in your cart.
-    <% end %>
-  </p>
-</body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <header>
+    <h1>Shopping Cart</h1>
+  </header>
+  <body>
+    <p>
+      <% if @products_in_cart.any? %>
+      <div class="category">
+        <%= render @products_in_cart %>
+      </div>
+      <% else %>
+        There are no products in your cart.
+      <% end %>
+    </p>
+  </body>
+</html>
