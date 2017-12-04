@@ -1,0 +1,17 @@
+<div class="cart_product">
+  <h3><%= link_to product.name, show_product_path(product.id) %></h3>
+  <p class="product_image">
+    <% if product.image.url.include? 'missing.png' %>
+      <%= link_to '[' + product.name + ']', show_product_path(product.id) %>
+    <% else %>
+      <%= link_to image_tag(product.image.url(:small)), show_product_path(product.id) %>
+    <% end %>
+  </p>
+  <p class = "price">Price: <%= number_to_currency(product.price) %></p>
+  <br />
+  <p>Quantity:</p>
+  <input type="hidden" id = "product_id" value="<%=product.id%>"/>
+  <input type="number" id = "quantity" name="quantity" min="0" max="100" value="<%=session[:cart]["#{product.id}"].to_i %>"/>
+  <%= link_to "Remove", remove_from_cart_product_path(product), method: :post, class: "link_to_item" %>
+
+</div>

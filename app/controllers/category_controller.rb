@@ -34,6 +34,6 @@ class CategoryController < ApplicationController
   private
 
   def load_products_in_cart
-    @products_in_cart = Product.find(session[:cart])
+    @products_in_cart = Product.find(session[:cart].keys)
   end
 end

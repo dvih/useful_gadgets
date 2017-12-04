@@ -1,3 +1,17 @@
+<script type="application/javascript">
+  $(function() {
+    $('input[name="quantity"]').change(function() {
+        var quantity = this.value;
+        $.ajax({
+            url: 'products/change_quantity',
+            data: 'id=' + this.parentElement.getElementsByTagName('input')[0].value + '&quantity=' + this.value,
+            success: function() {
+                alert("Quantity updated to " + quantity + ".");
+            }
+        });
+    });
+  });
+</script>
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,7 +24,10 @@
     <p>
       <% if @products_in_cart.any? %>
       <div class="category">
-        <%= render @products_in_cart %>
+        <h4>Please wait between each quantity change for an alert to show up confirming the change.</h4>
+        <% @products_in_cart.each do |product| %>
+          <%= render 'products/cart_product', :product => product %>
+        <% end %>
       </div>
       <% else %>
         There are no products in your cart.

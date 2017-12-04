@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/cart'=> 'product#show_cart', as: 'cart'
 
+  get 'products/change_quantity' => 'product#change_quantity'
+
   resources :product, only: [:index] do
     member do
       post :remove_from_cart

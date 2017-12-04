@@ -27,20 +27,28 @@ class ProductController < ApplicationController
     # get product id
     id = params[:id].to_i
     # push product to session
-    session[:cart] << id unless session[:cart].include?(id)
+    session[:cart].store(id, 1) unless session[:cart].key?(id)
 
     product_name = Product.find(id).name
     redirect_to request.referer, notice: "Added #{product_name} to the "
+  end
+
+  def change_quantity
+    # get product id
+    id = params[:id]
+    quantity = params[:quantity].to_i
+    # update product quantity
+    session[:cart][id] = quantity
   end
 
   private
 
   def initialize_session
     # if cart is not initialized
-    session[:cart] ||= []
+    session[:cart] ||= {}
   end
 
   def load_products_in_cart
-    @products_in_cart = Product.find(session[:cart])
+    @products_in_cart = Product.find(session[:cart].keys)
   end
 end

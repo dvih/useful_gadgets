@@ -77,6 +77,39 @@ h3 {
   }
 }
 
+.cart_product {
+  box-shadow: 1px 1px 2px 0px #000;
+  height: 120px;
+  width: 400px;
+  display: block;
+  background-color: #555;
+  margin: 5px;
+
+  .link_to_item {
+    display: inline-block;
+    float: right;
+  }
+
+  #quantity {
+    display: inline-block;
+  }
+
+  .product_image {
+    margin: 5px;
+    float: left;
+
+    img {
+      border-radius: 20%;
+    }
+  }
+
+  p {
+    padding: 3px;
+    margin: 3px;
+    display: inline-block;
+  }
+}
+
 .product_detail {
   height: auto;
   width: auto;
