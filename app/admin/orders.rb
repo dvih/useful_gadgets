@@ -1,3 +1,3 @@
 ActiveAdmin.register Order do
-  permit_params :status, :customer_id
+  permit_params :name, :order_status_id
 end
