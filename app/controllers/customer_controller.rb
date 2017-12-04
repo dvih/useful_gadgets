@@ -3,15 +3,15 @@ class CustomerController < ApplicationController
   before_action :load_products_in_cart, only: [:verify_order]
 
   def create
-    username = params[:username]
-    password = params[:password]
-    province_id = params[:province_id]
-    postal = params[:postal]
+    username = params[:customer][:username]
+    password = params[:customer][:password]
+    province_id = params[:customer][:province_id]
+    postal = params[:customer][:postal]
 
     customer = Customer.create(username: username, password: password, province_id: province_id, postal: postal)
     customer.save
 
-    redirect_to controller: 'customer', action: 'verify_order', id: 1
+    redirect_to controller: 'customer', action: 'verify_order', id: customer.id
   end
 
   def verify_order
@@ -31,12 +31,13 @@ class CustomerController < ApplicationController
 
     order_items = []
     products.each do |order_product|
-      order_item = OrderItem.create(quantity: session[:cart][order_product.id].to_i, product_id: order_product.id, order_id: order.id)
+      order_item = OrderItem.create(quantity: session[:cart]["#{order_product.id}"], product_id: order_product.id, order_id: order.id)
       order_item.save
       order_items.push(order_item)
     end
 
-    redirect_to controller: 'product', action: 'show_cart', :notice => "Order completed and logged."
+    flash[:notice] = "Order completed and logged."
+    redirect_to controller: 'product', action: 'show_cart'
   end
 
   private

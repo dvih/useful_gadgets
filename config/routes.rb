@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   get '/checkout' => 'product#checkout', as: 'checkout'
 
-  get '/checkout/new/customer' => 'customer#create', as: 'customers'
+  post '/checkout/new/customer' => 'customer#create', as: 'customers'
 
   get '/verify_order' => 'customer#verify_order', as: 'verify_order'
 
