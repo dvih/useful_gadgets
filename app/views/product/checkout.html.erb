@@ -22,7 +22,11 @@
       <%= f.select :province_id, @provinces.map { |province| [ province.name, province.id ] } %>
       </div>
       <div class = "form_field">
-        <%= link_to '<button type="button">Confirm Order</button>'.html_safe, checkout_path %>
+      <%= f.label :postal %>
+      <%= f.text_field :postal %>
+      </div>
+      <div class = "form_field">
+        <%= link_to '<button type="button">Confirm Order</button>'.html_safe, customers_path %>
       </div>
       <%end%>
       </form>

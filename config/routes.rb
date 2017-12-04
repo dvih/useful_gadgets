@@ -13,7 +13,11 @@ Rails.application.routes.draw do
 
   get '/checkout' => 'product#checkout', as: 'checkout'
 
-  get '/checkout/new/customer' => 'customer#create_customer', as: 'customers'
+  get '/checkout/new/customer' => 'customer#create', as: 'customers'
+
+  get '/verify_order' => 'customer#verify_order', as: 'verify_order'
+
+  get '/checkout/order' => 'customer#order', as: 'order'
 
   resources :product, only: [:index] do
     member do

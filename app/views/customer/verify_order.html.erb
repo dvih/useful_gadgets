@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <header>
+    <h1>Order</h1>
+  </header>
+  <body>
+    <div class = "verify_main">
+      <div class = "form_field">
+        <%=@customer.username%>
+      </div>
+      <div class = "form_field">
+        <%=@customer.province.name%>
+      </div>
+      <p>Subtotal: <%= number_to_currency @products_in_cart.inject(0) { |subtotal, product| subtotal + (product.price * session[:cart]["#{product.id}"]) }%></p>
+      <% if @province.gst_rate > 0.0 %>
+      <p>GST: <%= number_to_currency @products_in_cart.inject(0) { |gst, product| gst + (product.price * session[:cart]["#{product.id}"] * (@province.gst_rate / 100)) }%></p>
+      <% end %>
+      <% if @province.pst_rate > 0.0 %>
+      <p>PST: <%= number_to_currency @products_in_cart.inject(0) { |pst, product| pst + (product.price * session[:cart]["#{product.id}"] * (@province.pst_rate / 100)) }%></p>
+      <% end %>
+      <% if @province.hst_rate > 0.0 %>
+      <p>HST: <%= number_to_currency @products_in_cart.inject(0) { |hst, product| hst + (product.price * session[:cart]["#{product.id}"] * (@province.hst_rate / 100)) }%></p>
+      <% end %>
+      <p>Total: <%= number_to_currency @products_in_cart.inject(0) { |total, product| total + (product.price * session[:cart]["#{product.id}"] * @total_taxes) }%></p>
+      <div class = "form_field">
+        <%= link_to '<button type="button">Order!</button>'.html_safe, order_path(:id => @customer.id) %>
+      </div>
+    </div>
+      <div class="order_products">
+        <h4>Products Ordered</h4>
+        <% @products_in_cart.each do |product| %>
+          <%= render 'products/order_product', :product => product %>
+          <% end %>
+      </div>
+      <div class="both"></div>
+  </body>
+</html>

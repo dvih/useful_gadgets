@@ -17,7 +17,7 @@
     <% if flash[:notice] %>
       <div class="flash">
           <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-          <p><%= flash[:notice] %><%= link_to 'cart.', cart_path %></p>
+          <p><%= flash[:notice] %></p>
       </div>
     <% end %>
     <%= yield %>

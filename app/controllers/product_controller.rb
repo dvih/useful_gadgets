@@ -12,7 +12,7 @@ class ProductController < ApplicationController
   end
 
   def show_cart
-
+    flash.keep[:notice]
   end
 
   def remove_from_cart
@@ -20,7 +20,7 @@ class ProductController < ApplicationController
     session[:cart].delete(id)
 
     product_name = Product.find(id).name
-    redirect_to request.referer, notice: "Removed #{product_name} from the "
+    redirect_to request.referer, notice: "Removed #{product_name} from the cart."
   end
 
   def add_to_cart
