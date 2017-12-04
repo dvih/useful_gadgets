@@ -42,7 +42,7 @@ class ProductController < ApplicationController
   end
 
   def checkout
-
+    
   end
 
   private
