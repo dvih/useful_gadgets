@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get '/checkout' => 'product#checkout', as: 'checkout'
 
+  get '/checkout/new/customer' => 'customer#create_customer', as: 'customers'
+
   resources :product, only: [:index] do
     member do
       post :remove_from_cart

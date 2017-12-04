@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
 
   validates :name, :price, :description, presence:true
+  validates :name, with: /^[A-Za-z]+$/
 
   # Maximum of 2 decimal places.
   # Adapted from https://stackoverflow.com/a/38517312/5952715

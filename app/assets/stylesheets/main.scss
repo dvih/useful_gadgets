@@ -230,8 +230,9 @@ footer {
   }
 }
 
-.user_info {
+#new_customer {
   float: left;
+  width: 60%;
 }
 
 .order_products {
@@ -262,4 +263,14 @@ footer {
 
 .both {
   clear: both;
+}
+
+.form_field {
+  display: block;
+  margin: 20px;
+  width: 50%;
+  input, select {
+    width: 50%;
+    float: right;
+  }
 }

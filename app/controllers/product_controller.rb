@@ -42,7 +42,7 @@ class ProductController < ApplicationController
   end
 
   def checkout
-    
+    @provinces = Province.all.order("name")
   end
 
   private
