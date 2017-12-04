@@ -28,6 +28,9 @@
         <% @products_in_cart.each do |product| %>
           <%= render 'products/cart_product', :product => product %>
         <% end %>
+        <form id = "checkout">
+          <%= link_to '<button type="button">Proceed to Checkout</button>'.html_safe, checkout_path %>
+        </form>
       </div>
       <% else %>
         There are no products in your cart.

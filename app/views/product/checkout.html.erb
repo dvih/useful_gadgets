@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <header>
+    <h1>Checkout</h1>
+  </header>
+  <body>
+    <p class = "checkout_main">
+      <form class ="user_info">
+        <p>Hello Wo</p>
+        <%= link_to '<button type="button">Confirm Order</button>'.html_safe, checkout_path %>
+      </form>
+      <div class="order_products">
+        <h4>Products Ordered</h4>
+        <% @products_in_cart.each do |product| %>
+          <%= render 'products/order_product', :product => product %>
+        <% end %>
+        <p>Subtotal: <%= number_to_currency @products_in_cart.inject(0) { |subtotal, product| subtotal + (product.price * session[:cart]["#{product.id}"]) }%></p>
+      </div>
+      <div class="both"></div>
+    </p>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 class ProductController < ApplicationController
   before_action :set_categories
   before_action :initialize_session
-  before_action :load_products_in_cart, only: [:show_cart]
+  before_action :load_products_in_cart, only: [:show_cart, :checkout]
 
   def set_categories
     @categories = Category.includes(:products).all.order("name")
@@ -39,6 +39,10 @@ class ProductController < ApplicationController
     quantity = params[:quantity].to_i
     # update product quantity
     session[:cart][id] = quantity
+  end
+
+  def checkout
+
   end
 
   private

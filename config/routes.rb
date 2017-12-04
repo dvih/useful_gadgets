@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get 'products/change_quantity' => 'product#change_quantity'
 
+  get '/checkout' => 'product#checkout', as: 'checkout'
+
   resources :product, only: [:index] do
     member do
       post :remove_from_cart
