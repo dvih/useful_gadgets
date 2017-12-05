@@ -14,13 +14,18 @@
         <%= f.text_field :username %>
       </div>
       <div class = "form_field">
-      <%= f.label :password %>
-      <%= f.text_field :password %>
+        <%= f.label :password %>
+        <%= f.text_field :password %>
       </div>
       <div class = "form_field">
-      <%= f.label :province_id %>
-      <%= f.select :province_id, @provinces.map { |province| [ province.name, province.id ] } %>
+        <%= f.label :province_id %>
+        <%= f.select :province_id, @provinces.map { |province| [ province.name, province.id ] } %>
       </div>
+      <div class = "form_field">
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+      </div>
+
       <div class = "form_field">
       <%= f.label :postal %>
       <%= f.text_field :postal %>

@@ -1,3 +1,6 @@
+<script type="text/javascript">
+  Stripe.setPublishableKey('PUBLISHABLE_KEY');
+</script>
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,6 +21,11 @@
       <div class="flash">
           <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
           <p><%= flash[:notice] %></p>
+      </div>
+    <% elsif flash[:error] %>
+      <div class="flash">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <p><%= flash[:error] %></p>
       </div>
     <% end %>
     <%= yield %>

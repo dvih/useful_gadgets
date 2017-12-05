@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'charges/new'
+
+  get 'charges/create'
+
   post 'products/search' => 'category#search', as: 'search_products'
 
   get '' => 'category#index', as: 'index'
@@ -18,6 +22,8 @@ Rails.application.routes.draw do
   get '/verify_order' => 'customer#verify_order', as: 'verify_order'
 
   get '/checkout/order' => 'customer#order', as: 'order'
+
+  resources :charges
 
   resources :product, only: [:index] do
     member do

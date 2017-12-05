@@ -7,6 +7,13 @@
     <h1>Order</h1>
   </header>
   <body>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+    </article>
     <div class = "verify_main">
       <div class = "form_field">
         <%=@customer.username%>
@@ -24,10 +31,8 @@
       <% if @province.hst_rate > 0.0 %>
       <p>HST: <%= number_to_currency @products_in_cart.inject(0) { |hst, product| hst + (product.price * session[:cart]["#{product.id}"] * (@province.hst_rate / 100)) }%></p>
       <% end %>
-      <p>Total: <%= number_to_currency @products_in_cart.inject(0) { |total, product| total + (product.price * session[:cart]["#{product.id}"] * @total_taxes) }%></p>
-      <div class = "form_field">
-        <%= link_to '<button type="button">Order!</button>'.html_safe, order_path(:id => @customer.id) %>
-      </div>
+      <p>Grand Total: <%= number_to_currency(@grand_total.to_f) %></p>
+      <%= link_to "<button>Proceed to Payment</button>".html_safe, charges_new_path %>
     </div>
       <div class="order_products">
         <h4>Products Ordered</h4>

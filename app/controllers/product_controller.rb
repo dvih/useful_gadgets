@@ -12,12 +12,12 @@ class ProductController < ApplicationController
   end
 
   def show_cart
-    flash.keep[:notice]
+
   end
 
   def remove_from_cart
     id = params[:id].to_i
-    session[:cart].delete(id)
+    session[:cart].delete("#{id}")
 
     product_name = Product.find(id).name
     redirect_to request.referer, notice: "Removed #{product_name} from the cart."
@@ -27,18 +27,18 @@ class ProductController < ApplicationController
     # get product id
     id = params[:id].to_i
     # push product to session
-    session[:cart].store(id, 1) unless session[:cart].key?(id)
+    session[:cart].store("#{id}", 1) unless session[:cart].key?("#{id}")
 
     product_name = Product.find(id).name
-    redirect_to request.referer, notice: "Added #{product_name} to the "
+    redirect_to request.referer, notice: "Added #{product_name} to the cart."
   end
 
   def change_quantity
     # get product id
-    id = params[:id]
+    id = params[:id].to_i
     quantity = params[:quantity].to_i
     # update product quantity
-    session[:cart][id] = quantity
+    session[:cart]["#{id}"] = quantity
   end
 
   def checkout

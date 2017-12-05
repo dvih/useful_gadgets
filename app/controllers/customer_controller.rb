@@ -6,9 +6,10 @@ class CustomerController < ApplicationController
     username = params[:customer][:username]
     password = params[:customer][:password]
     province_id = params[:customer][:province_id]
+    address = params[:customer][:address]
     postal = params[:customer][:postal]
 
-    customer = Customer.create(username: username, password: password, province_id: province_id, postal: postal)
+    customer = Customer.create(username: username, password: password, province_id: province_id, postal: postal, address: address)
     customer.save
 
     redirect_to controller: 'customer', action: 'verify_order', id: customer.id
@@ -16,9 +17,13 @@ class CustomerController < ApplicationController
 
   def verify_order
     @customer = Customer.find(params[:id])
+    session[:id] = params[:id]
     @province = @customer.province
 
-    @total_taxes = 1 + ((@province.gst_rate + @province.pst_rate + @province.hst_rate) / 100)
+    @total_taxes = 1 + ((@province.gst_rate + @province.pst_rate + @province.hst_rate) / 100).to_f
+
+    @grand_total = @products_in_cart.inject(0) { |total, product| total + (product.price.to_f * session[:cart]["#{product.id}"].to_f * @total_taxes) }
+    session[:grand_total] = (@grand_total.to_f.round(2) * 100)
   end
 
   def order
@@ -26,7 +31,8 @@ class CustomerController < ApplicationController
 
     products = Product.find(session[:cart].keys)
 
-    order = Order.create(status: "New", customer_id: customer.id)
+    # Status = "Paid"
+    order = Order.create(order_status_id: 2, customer_id: customer.id)
     order.save
 
     order_items = []
@@ -36,7 +42,7 @@ class CustomerController < ApplicationController
       order_items.push(order_item)
     end
 
-    flash[:notice] = "Order completed and logged."
+    flash[:notice] = "Order completed and logged. You paid $#{session[:grand_total] / 100.00}."
     redirect_to controller: 'product', action: 'show_cart'
   end
 

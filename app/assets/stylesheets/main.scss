@@ -233,6 +233,10 @@ footer {
 #new_customer {
   float: left;
   width: 60%;
+
+  input[name="commit"] {
+    margin-left:20px;
+  }
 }
 
 .order_products {
@@ -277,9 +281,20 @@ footer {
 
 .verify_main {
   float: left;
-  
+
   p {
     margin-left: 20px;
     display: block;
   }
+
+  button {
+    margin-left: 20px;
+  }
+}
+.amount {
+  margin-left: 20px;
+}
+
+.stripe-button-el {
+  margin-left: 20px;
 }
