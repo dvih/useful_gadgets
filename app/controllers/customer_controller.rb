@@ -1,5 +1,6 @@
 class CustomerController < ApplicationController
   before_action :set_categories
+  before_action :initialize_session
   before_action :load_products_in_cart, only: [:verify_order]
 
   def create
@@ -47,6 +48,11 @@ class CustomerController < ApplicationController
   end
 
   private
+
+  def initialize_session
+    # if cart is not initialized
+    session[:cart] ||= {}
+  end
 
   def set_categories
     @categories = Category.includes(:products).all.order("name")

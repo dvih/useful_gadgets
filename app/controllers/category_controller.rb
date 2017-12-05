@@ -1,4 +1,5 @@
 class CategoryController < ApplicationController
+  before_action :initialize_session
   before_action :set_categories, only: [:index, :show, :search]
   before_action :load_products_in_cart, only: [:index, :show]
 
@@ -32,6 +33,11 @@ class CategoryController < ApplicationController
   end
 
   private
+
+  def initialize_session
+    # if cart is not initialized
+    session[:cart] ||= {}
+  end
 
   def load_products_in_cart
     @products_in_cart = Product.find(session[:cart].keys)
