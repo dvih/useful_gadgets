@@ -81,8 +81,19 @@ ActiveRecord::Schema.define(version: 20171205071553) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "products" because of following StandardError
-#   Unknown type '' for column 'image'
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "category_id"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["category_id"], name: "index_products_on_category_id"
+  end
 
   create_table "provinces", force: :cascade do |t|
     t.string "name"
